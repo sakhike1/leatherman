@@ -5,7 +5,9 @@
     <Navigation />
     <HeroPage />
     <CardsPage />
+    <Carousel />
     <SubScribe />
+
     <SlidePage />
     <Footer />
   </div>

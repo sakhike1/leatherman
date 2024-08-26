@@ -3,13 +3,16 @@
     <div
       class="flex items-center max-md:flex-col gap-4 bg-gradient-to-r animate-gradient text-white px-4 py-2 font-[sans-serif]"
     >
-      <p class="text-sm text-black flex-1 max-md:text-center">
+      <p class="text-sm text-white flex-1 max-md:text-center">
         Don't miss out on our amazing summer sale! Get up to 50% off on a wide range of
         products. Make the most of your summer shopping.
       </p>
 
       <div>
-        <button type="button" class="bg-white text-blue-500 py-2 px-4 rounded text-sm">
+        <button
+          type="button"
+          class="bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100 text-black py-2 px-4 rounded text-sm"
+        >
           Get Offer
         </button>
       </div>
@@ -35,7 +38,7 @@ export default {};
 }
 
 .animate-gradient {
-  background: linear-gradient(270deg, #ff7e5f, #feb47b, #ff6b6b, #f5af19);
+  background: linear-gradient(270deg, #5c5b5b, #0f0e0e, #0c0606, #d4cfc5);
   background-size: 600% 600%;
   animation: gradient 10s ease infinite;
   min-height: 30px; /* You can adjust this value to control the height */

@@ -1,7 +1,7 @@
 <template>
   <div class="font-[sans-serif] p-20">
     <div
-      class="grid md:grid-cols-2 items-center gap-10 max-w-5xl max-md:max-w-md mx-auto"
+      class="grid md:grid-cols-2 items-center gap-10 max-w-7xl max-md:max-w-md mx-auto"
     >
       <div
         class="md:h-[400px] bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r"
@@ -23,7 +23,7 @@
         </p>
         <button
           type="button"
-          class="px-5 py-2.5 mt-8 bg-black hover:bg-gray-700 text-white tracking-wider rounded text-sm outline-none"
+          class="w-48 px-5 py-2.5 mt-8 bg-black hover:bg-gray-700 text-white tracking-wider rounded text-sm outline-none"
         >
           Explore
         </button>
