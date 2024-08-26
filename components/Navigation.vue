@@ -1,11 +1,11 @@
 <template>
-  <nav class="bg-white shadow-lg">
+  <nav class="bg-gradient-to-r from-gray-700 via-gray-900 to-black shadow-lg">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">
         <div class="flex space-x-7">
           <!-- Website Logo -->
           <a href="#" class="flex items-center py-4 px-2">
-            <span class="font-semibold text-gray-500 text-lg">Leatherman</span>
+            <span class="font-semibold text-gray-100 text-lg">Leatherman</span>
           </a>
         </div>
         <!-- Primary Navbar items -->
@@ -100,8 +100,8 @@ export default {
     },
     linkClass(link) {
       return this.activeLink === link
-        ? "py-4 px-2 text-gray-500 border-b-4 border-gray-500 font-semibold"
-        : "py-4 px-2 text-gray-500 font-semibold hover:text-purple-500 transition duration-300";
+        ? "py-4 px-2 text-gray-100 border-b-4 border-yellow-500 font-semibold"
+        : "py-4 px-2 text-gray-100 font-semibold hover:text-gray-150 transition duration-300";
     },
   },
 };

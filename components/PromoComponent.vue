@@ -38,7 +38,7 @@ export default {};
 }
 
 .animate-gradient {
-  background: linear-gradient(270deg, #5c5b5b, #0f0e0e, #0c0606, #d4cfc5);
+  background: linear-gradient(270deg, #5c5b5b, #f8dede, #360e0e, #d4cfc5);
   background-size: 600% 600%;
   animation: gradient 10s ease infinite;
   min-height: 30px; /* You can adjust this value to control the height */
