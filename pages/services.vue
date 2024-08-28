@@ -1,5 +1,5 @@
 <template>
-  <div><promo-component></promo-component> <Navigation /></div>
+  <div><promo-component></promo-component> <Navigation /> <services/> <Footer/></div>
 </template>
 
 <script>

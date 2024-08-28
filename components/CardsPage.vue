@@ -50,38 +50,40 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
-import Pagination from "@/components/Pagination.vue";
-import Starrating from "@/components/Starrating.vue";
+import { ref, computed, onMounted } from 'vue';
+import { useRouter } from '#app';
+import Pagination from '@/components/Pagination.vue';
+import Starrating from '@/components/Starrating.vue';
 
 // Import images
-import leather1 from "@/assets/leather1.png";
-import leather2 from "@/assets/leather2.png";
-import leather3 from "@/assets/leather3.png";
-import leather4 from "@/assets/leather4.png";
-import leather5 from "@/assets/leather5.png";
-import leather6 from "@/assets/leather6.png";
-import leather7 from "@/assets/leather7.png";
-import leather8 from "@/assets/leather8.png";
+import leather1 from '@/assets/leather1.png';
+import leather2 from '@/assets/leather2.png';
+import leather3 from '@/assets/leather3.png';
+import leather4 from '@/assets/leather4.png';
+import leather5 from '@/assets/leather5.png';
+import leather6 from '@/assets/leather6.png';
+import leather7 from '@/assets/leather7.png';
+import leather8 from '@/assets/leather8.png';
 
-const products = ref([]); // Initialize as an empty array
+const router = useRouter();
+
+const products = ref([]);
 const currentPage = ref(1);
 const itemsPerPage = 8;
 
 const images = {
-  "leather1.png": leather1,
-  "leather2.png": leather2,
-  "leather3.png": leather3,
-  "leather4.png": leather4,
-  "leather5.png": leather5,
-  "leather6.png": leather6,
-  "leather7.png": leather7,
-  "leather8.png": leather8,
+  'leather1.png': leather1,
+  'leather2.png': leather2,
+  'leather3.png': leather3,
+  'leather4.png': leather4,
+  'leather5.png': leather5,
+  'leather6.png': leather6,
+  'leather7.png': leather7,
+  'leather8.png': leather8,
 };
 
 const getImageSrc = (imageName) => {
-  const src = images[imageName] || "/images/placeholder.png";
-  return src;
+  return images[imageName] || '/images/placeholder.png';
 };
 
 const paginatedProducts = computed(() => {
@@ -95,21 +97,31 @@ const totalPages = computed(() => {
 });
 
 const handleButtonClick = (id) => {
-  console.log(`Button clicked for product ID: ${id}`);
+  router.push({ name: 'item-details', query: { id } }); // Navigate to the item page with product ID
 };
 
-onMounted(async () => {
+const fetchProducts = async () => {
   try {
-    const { data, pending, error } = await useFetch("/api/products");
+    const { data, error } = await useFetch('/api/products');
     if (error.value) {
-      console.error("Error fetching products:", error.value);
+      console.error('Error fetching products:', error.value);
     } else if (data.value) {
+      localStorage.setItem('products', JSON.stringify(data.value));
       products.value = data.value || [];
     } else {
-      console.error("No data received");
+      console.error('No data received');
     }
   } catch (err) {
-    console.error("Error during fetch:", err);
+    console.error('Error during fetch:', err);
+  }
+};
+
+onMounted(() => {
+  const storedProducts = localStorage.getItem('products');
+  if (storedProducts) {
+    products.value = JSON.parse(storedProducts);
+  } else {
+    fetchProducts();
   }
 });
 </script>

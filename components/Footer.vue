@@ -18,7 +18,7 @@
             fill="#7629C8"
           />
         </svg>
-        <span class="sr-only">Kutty Home Page</span>
+        <span class="sr-only">Leatherman</span>
       </a>
       <nav class="mb-8">
         <p class="mb-3 text-xs font-bold tracking-wider text-gray-500 uppercase">Product</p>

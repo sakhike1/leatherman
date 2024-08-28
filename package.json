@@ -17,8 +17,11 @@
     "nuxt": "^3.13.0",
     "pagedone": "^1.2.1",
     "preline": "^2.4.1",
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
     "swiper": "^11.1.10",
     "vue": "latest",
+    "vue-redux": "^0.0.2",
     "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {

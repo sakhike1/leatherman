@@ -10,41 +10,47 @@
         </div>
         <!-- Primary Navbar items -->
         <div class="hidden md:flex items-center space-x-4">
-          <nuxt-link to="/" @click="setActiveLink('Home')" :class="linkClass('Home')"
-            >Home</nuxt-link
+          <nuxt-link
+            to="/"
+            :class="linkClass('/')"
           >
+            Home
+          </nuxt-link>
           <nuxt-link
             to="/services"
-            @click="setActiveLink('Services')"
-            :class="linkClass('Services')"
-            >Services</nuxt-link
+            :class="linkClass('/services')"
           >
+            Services
+          </nuxt-link>
           <nuxt-link
             to="/about"
-            @click="setActiveLink('About')"
-            :class="linkClass('About')"
-            >About</nuxt-link
+            :class="linkClass('/about')"
           >
+            About
+          </nuxt-link>
           <nuxt-link
             to="/contact"
-            @click="setActiveLink('Contact Us')"
-            :class="linkClass('Contact Us')"
-            >Contact Us</nuxt-link
+            :class="linkClass('/contact')"
           >
+            Contact Us
+          </nuxt-link>
           <!-- New links -->
           <nuxt-link
             to="/signup"
-            @click="setActiveLink('Sign Up')"
-            :class="linkClass('Sign Up')"
-            >Sign Up</nuxt-link
+            :class="linkClass('/signup')"
           >
+            Sign Up
+          </nuxt-link>
           <nuxt-link
             to="/login"
-            @click="setActiveLink('Login')"
-            :class="linkClass('Login')"
-            >Login</nuxt-link
+            :class="linkClass('/login')"
           >
-          <nuxt-link to="/cart" @click="setActiveLink('Cart')" :class="linkClass('Cart')">
+            Login
+          </nuxt-link>
+          <nuxt-link
+            to="/cart"
+            :class="linkClass('/cart')"
+          >
             <svg
               class="w-6 h-6 text-gray-100 inline"
               xmlns="http://www.w3.org/2000/svg"
@@ -85,53 +91,59 @@
     <div :class="mobileMenuClass">
       <ul>
         <li>
-          <nuxt-link to="/" @click="setActiveLink('Home')" :class="linkClass('Home')"
-            >Home</nuxt-link
+          <nuxt-link
+            to="/"
+            :class="linkClass('/')"
           >
+            Home
+          </nuxt-link>
         </li>
         <li>
           <nuxt-link
             to="/services"
-            @click="setActiveLink('Services')"
-            :class="linkClass('Services')"
-            >Services</nuxt-link
+            :class="linkClass('/services')"
           >
+            Services
+          </nuxt-link>
         </li>
         <li>
           <nuxt-link
             to="/about"
-            @click="setActiveLink('About')"
-            :class="linkClass('About')"
-            >About</nuxt-link
+            :class="linkClass('/about')"
           >
+            About
+          </nuxt-link>
         </li>
         <li>
           <nuxt-link
             to="/contact"
-            @click="setActiveLink('Contact Us')"
-            :class="linkClass('Contact Us')"
-            >Contact Us</nuxt-link
+            :class="linkClass('/contact')"
           >
+            Contact Us
+          </nuxt-link>
         </li>
         <!-- New links -->
         <li>
           <nuxt-link
             to="/signup"
-            @click="setActiveLink('Sign Up')"
-            :class="linkClass('Sign Up')"
-            >Sign Up</nuxt-link
+            :class="linkClass('/signup')"
           >
+            Sign Up
+          </nuxt-link>
         </li>
         <li>
           <nuxt-link
             to="/login"
-            @click="setActiveLink('Login')"
-            :class="linkClass('Login')"
-            >Login</nuxt-link
+            :class="linkClass('/login')"
           >
+            Login
+          </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/cart" @click="setActiveLink('Cart')" :class="linkClass('Cart')">
+          <nuxt-link
+            to="/cart"
+            :class="linkClass('/cart')"
+          >
             <svg
               class="w-6 h-6 text-gray-100 inline"
               xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +171,6 @@ export default {
   data() {
     return {
       showMenu: false,
-      activeLink: "Home", // Default active link
     };
   },
   computed: {
@@ -171,11 +182,8 @@ export default {
     toggleMenu() {
       this.showMenu = !this.showMenu;
     },
-    setActiveLink(link) {
-      this.activeLink = link;
-    },
-    linkClass(link) {
-      return this.activeLink === link
+    linkClass(path) {
+      return this.$route.path === path
         ? "py-4 px-2 text-gray-100 border-b-4 border-yellow-500 font-semibold"
         : "py-4 px-2 text-gray-100 font-semibold hover:text-gray-150 transition duration-300";
     },
@@ -184,5 +192,5 @@ export default {
 </script>
 
 <style scoped>
-/* Add any additional styling if needed */
+/* Additional styling to ensure the border is always visible */
 </style>
