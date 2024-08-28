@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="font-[sans-serif]  bg-gray-300"
+      class="font-[sans-serif]  bg-gradient-to-r from-slate-400 via-black to-blue-500"
     >
       <div class="min-h-screen flex fle-col items-center justify-center lg:p-6 p-4">
         <div class="grid md:grid-cols-2 items-center gap-10 max-w-6xl w-full">
@@ -9,7 +9,7 @@
             <h2 class="text-4xl font-extrabold lg:leading-[50px] text-black">
               Seamless Login for Exclusive Access
             </h2>
-            <p class="text-sm mt-6 text-gray-600">
+            <p class="text-sm mt-6 text-gray-300">
               Immerse yourself in a hassle-free login journey with our intuitively
               designed login form. Effortlessly access your account.
             </p>

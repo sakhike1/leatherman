@@ -4,9 +4,9 @@
       <div class="flex justify-between items-center">
         <div class="flex space-x-7">
           <!-- Website Logo -->
-          <a href="#" class="flex items-center py-4 px-2">
+          <nuxt-link to="/" class="flex items-center py-4 px-2">
             <span class="font-semibold text-gray-100 text-lg">Leatherman</span>
-          </a>
+          </nuxt-link>
         </div>
         <!-- Primary Navbar items -->
         <div class="hidden md:flex items-center space-x-4">

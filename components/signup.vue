@@ -1,6 +1,6 @@
 <template>
     <div>
-<div class="font-[sans-serif] bg-gray-300 text-gray-800">
+<div class="font-[sans-serif] bg-gradient-to-r from-slate-400 via-black to-blue-500 text-gray-800">
       <div class="min-h-screen flex fle-col items-center justify-center lg:p-6 p-4">
         <div class="grid md:grid-cols-2 items-center gap-10 max-w-6xl w-full">
           <div>

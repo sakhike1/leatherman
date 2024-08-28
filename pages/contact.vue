@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300"><promo-component></promo-component> <Navigation /> <contact/>
+  <div class="bg-gradient-to-r from-slate-400 via-black to-blue-500"><promo-component></promo-component> <Navigation /> <contact/>
   <Footer/>
   </div>
 </template>
