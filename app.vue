@@ -1,14 +1,7 @@
 <template>
   <div>
-    <NuxtRouteAnnouncer />
-    <promo-component></promo-component>
-    <Navigation />
-    <HeroPage />
-    <CardsPage />
-    <Carousel />
-    <SubScribe />
-
-    <SlidePage />
-    <Footer />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>

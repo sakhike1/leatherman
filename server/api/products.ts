@@ -1,5 +1,6 @@
 import { defineEventHandler } from "h3";
 
+
 export default defineEventHandler(async () => {
   return [
     {
@@ -8,6 +9,7 @@ export default defineEventHandler(async () => {
       price: "R1500",
       image: "leather1.png",
     },
+    // Other products...
     {
       id: 2,
       name: "Adjective Attire | T-shirt",
@@ -37,18 +39,6 @@ export default defineEventHandler(async () => {
       name: "Syllable Streetwear | T-shirt",
       price: "R1400",
       image: "leather6.png",
-    },
-    {
-      id: 7,
-      name: "Syllable Streetwear | T-shirt",
-      price: "R1700",
-      image: "leather7.png",
-    },
-    {
-      id: 8,
-      name: "Syllable Streetwear | T-shirt",
-      price: "R1900",
-      image: "leather8.png",
     },
     {
       id: 7,
