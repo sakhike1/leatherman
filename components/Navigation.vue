@@ -158,7 +158,7 @@
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4-7h14M7 13l-3 9m3-9h10m0 0l3 9m-3-9H7"
               />
             </svg>
-            Cart 
+            Cart 0
           </nuxt-link>
         </li>
       </ul>

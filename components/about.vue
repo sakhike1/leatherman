@@ -24,18 +24,18 @@
               Whether you're braving the elements or stepping out for a casual day, the Leatherman jacket offers unparalleled comfort and a sleek
             </p>
             <div>
-              <a
-                href=""
+              <nuxt-link
+                to="/contact"
                 class="bg-black dark:bg-slate-900 shadow-xl rounded py-3 px-8 text-xl mt-6 md:mt-12 inline-block"
                 >contact<span class="fas fa-arrow-right ml-2"></span
-              ></a>
+              ></nuxt-link>
             </div>
           </div>
         </div>
         <div class="col-span-12 lg:col-span-6 xl:col-span-5 text-center lg:text-start">
           <img
-            src="@/assets/image1.png"
-            alt=""
+            :src="currentImage"
+            alt="Dynamic Image"
             class="rounded max-w-full h-full mt-4"
           />
         </div>
@@ -45,14 +45,32 @@
 </template>
 
 <script>
+import image1 from '@/assets/image1.png';
+import image3 from '@/assets/image3.png';
+import image4 from '@/assets/image4.png';
+
 export default {
+  data() {
+    return {
+      images: [image1,  image3, image4],
+      currentImage: image1,
+      imageIndex: 0
+    };
+  },
   mounted() {
+    this.changeImage();
     this.changeSvgColor();
   },
   methods: {
+    changeImage() {
+      setInterval(() => {
+        this.imageIndex = (this.imageIndex + 1) % this.images.length;
+        this.currentImage = this.images[this.imageIndex];
+      }, 3000); // Change image every 3 seconds
+    },
     changeSvgColor() {
       const svgElement = document.querySelector('.color-changing-svg');
-      const colors = ['#FFD700', '#FF6347', '#FFFFFF', '#32CD32', '#FF69B4']; // Array of colors
+      const colors = ['#FFD700', '#FF6347', '#FFFFFF', '#32CD32', '#FF69B4'];
       let colorIndex = 0;
 
       setInterval(() => {
