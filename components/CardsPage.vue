@@ -3,8 +3,13 @@
     <div class="font-sans p-4 mx-auto lg:max-w-7xl md:max-w-3xl sm:max-w-full">
       <h2 class="text-4xl font-extrabold text-gray-800 mb-12">Premium leather</h2>
 
+      <!-- Display loading spinner when fetching products -->
+      <div v-if="loading" class="text-center text-gray-500">
+        Loading products...
+      </div>
+
       <!-- Check if there are any products to display -->
-      <div v-if="paginatedProducts.length === 0" class="text-center text-gray-500">
+      <div v-else-if="paginatedProducts.length === 0" class="text-center text-gray-500">
         No products available.
       </div>
 
@@ -27,7 +32,6 @@
             <div class="mt-4 flex items-center flex-wrap gap-2">
               <h4 class="text-lg font-bold text-gray-800">{{ product.price }}</h4>
             </div>
-            <!-- Button added here -->
             <starrating/>
             <button
               class="mt-4 w-full py-2 bg-gradient-to-b from-gray-900 to-gray-600 text-white rounded hover:bg-gradient-to-r from-gray-700 via-gray-900 to-black transition-colors"
@@ -41,6 +45,7 @@
 
       <!-- Pagination Component -->
       <Pagination
+        v-if="!loading && paginatedProducts.length > 0"
         :currentPage="currentPage"
         :totalPages="totalPages"
         @update:page="(page) => (currentPage = page)"
@@ -55,7 +60,6 @@ import { useRouter } from '#app';
 import Pagination from '@/components/Pagination.vue';
 import Starrating from '@/components/Starrating.vue';
 
-// Import images
 import leather1 from '@/assets/leather1.png';
 import leather2 from '@/assets/leather2.png';
 import leather3 from '@/assets/leather3.png';
@@ -68,6 +72,7 @@ import leather8 from '@/assets/leather8.png';
 const router = useRouter();
 
 const products = ref([]);
+const loading = ref(true); // Loading state
 const currentPage = ref(1);
 const itemsPerPage = 8;
 
@@ -97,7 +102,7 @@ const totalPages = computed(() => {
 });
 
 const handleButtonClick = (id) => {
-  router.push({ name: 'item-details', query: { id } }); // Navigate to the item page with product ID
+  router.push({ name: 'item-details', query: { id } });
 };
 
 const fetchProducts = async () => {
@@ -113,6 +118,8 @@ const fetchProducts = async () => {
     }
   } catch (err) {
     console.error('Error during fetch:', err);
+  } finally {
+    loading.value = false; // Set loading to false when data is fetched
   }
 };
 
@@ -120,6 +127,7 @@ onMounted(() => {
   const storedProducts = localStorage.getItem('products');
   if (storedProducts) {
     products.value = JSON.parse(storedProducts);
+    loading.value = false;
   } else {
     fetchProducts();
   }
