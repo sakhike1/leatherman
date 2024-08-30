@@ -1,6 +1,7 @@
 <template>
   <div>
-    <section class="py-24">
+    <section class="py-24" data-aos="fade-up"
+     data-aos-duration="3000">
       <div class="max-w-[1350px] mx-auto px-5 sm:px-10 md:px-12 lg:px-5">
         <div
           class="p-10 sm:p-10 md:p-14 lg:p-8 rounded-lg bg-gradient-to-r from-gray-700 via-gray-900 to-black dark:bg-gray-900 flex flex-col space-y-6 relative"

@@ -32,7 +32,8 @@
             </div>
           </div>
         </div>
-        <div class="col-span-12 lg:col-span-6 xl:col-span-5 text-center lg:text-start">
+        <div class="col-span-12 lg:col-span-6 xl:col-span-5 text-center lg:text-start" data-aos="fade-up"
+     data-aos-duration="3000">
           <img
             :src="currentImage"
             alt="Dynamic Image"

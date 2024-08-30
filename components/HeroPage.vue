@@ -1,10 +1,12 @@
 <template>
   <div class="font-[sans-serif] p-20">
-    <div
+    <div 
       class="grid md:grid-cols-2 items-center gap-10 max-w-7xl max-md:max-w-md mx-auto"
     >
-      <div
-        class="md:h-[400px] bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r"
+      <div data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500"
+        class="md:h-[400px]  from-gray-900 to-gray-600 bg-gradient-to-r"
       >
         <img
           :src="currentImage"

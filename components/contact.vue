@@ -1,5 +1,6 @@
 <template>
-  <div class="mt-6">
+  <div class="mt-6" data-aos="fade-up"
+     data-aos-duration="3000">
     <div class="grid sm:grid-cols-2 m-40 items-start gap-14 p-8 mx-auto max-w-4xl bg-gray-50 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md font-[sans-serif]">
       <div>
         <h1 class="text-gray-800 text-3xl font-extrabold">Let's Talk</h1>

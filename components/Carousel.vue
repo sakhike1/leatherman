@@ -1,5 +1,6 @@
 <template>
-  <div ref="slider" class="keen-slider">
+  <div ref="slider" class="keen-slider" data-aos="fade-up"
+     data-aos-duration="3000">
     <div class="keen-slider__slide">
       <img src="@/assets/slide1.png" alt="Slide 1" />
     </div>

@@ -1,5 +1,6 @@
 <template>
-  <div class="font-[sans-serif] max-w-4xl flex items-center mx-auto md:h-screen p-4">
+  <div class="font-[sans-serif] max-w-4xl flex items-center mx-auto md:h-screen p-4" data-aos="fade-up"
+     data-aos-duration="3000">
     <div class="grid bg-gray-100 md:grid-cols-3 items-center rounded-xl overflow-hidden">
       <div class="max-md:order-1 flex flex-col justify-center space-y-16 max-md:mt-16 min-h-full animate-gradient h-full to-gray-400 lg:px-8 px-4 py-4">
         <div>

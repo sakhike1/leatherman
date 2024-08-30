@@ -15,7 +15,8 @@
       <div
         class="col-span-12 lg:col-span-7 lg:col-start-6 xl:col-span-6 xl:col-start-7 text-center lg:text-start"
       >
-        <div class="bg-gray-50 dark:bg-slate-700 p-12">
+        <div class="bg-gray-50 dark:bg-slate-700 p-12" data-aos="fade-up"
+     data-aos-duration="3000">
           <h2 class="text-2xl leading-snug md:text-[40px] mb-6">
            Discover the Leatherman Jacket: Unmatched Durability and Style
           </h2>

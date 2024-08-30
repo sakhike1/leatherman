@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div class="font-sans p-4 mx-auto lg:max-w-7xl md:max-w-3xl sm:max-w-full">
+    <div   class="font-sans p-4 mx-auto lg:max-w-7xl md:max-w-3xl sm:max-w-full">
       <h2 class="text-4xl font-extrabold text-gray-800 mb-12">Premium leather</h2>
 
       <!-- Display loading spinner when fetching products -->
-      <div v-if="loading" class="text-center text-gray-500">
+      <div v-if="loading" class="text-center text-gray-500" >
         Loading products...
       </div>
 
       <!-- Check if there are any products to display -->
-      <div v-else-if="paginatedProducts.length === 0" class="text-center text-gray-500">
+      <div v-else-if="paginatedProducts.length === 0" class="text-center text-gray-500" >
         No products available.
       </div>
 
@@ -17,7 +17,7 @@
         <div
           v-for="product in paginatedProducts"
           :key="product.id"
-          class="bg-white rounded border overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
+          class="bg-white shadow-5-strong rounded border overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
         >
           <div class="w-full aspect-w-16 aspect-h-8 lg:h-80">
             <img
