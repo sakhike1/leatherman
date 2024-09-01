@@ -11,7 +11,7 @@
     <images-page/>
     
     <SlidePage />
-  
+     <scrollToTop/>
     <Footer />
   </div>
 </template>
