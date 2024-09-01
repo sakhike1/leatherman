@@ -7,13 +7,20 @@
     <CardsPage />
     <Carousel />
     <SubScribe />
+    <testimonial/>
+    <images-page/>
+    
     <SlidePage />
+  
     <Footer />
   </div>
 </template>
 
 <script>
-export default {};
+import ImagesPage from '~/components/ImagesPage.vue';
+import Testimonial from '~/components/testimonial.vue';
+export default {
+  components: { ImagesPage, Testimonial },};
 </script>
 
 <style lang="scss" scoped></style>

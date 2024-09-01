@@ -24,11 +24,11 @@
            At Leatherman, we believe in crafting jackets that blend exceptional durability with timeless style. Our jackets are designed for those who demand the best, combining high-quality materials with expert craftsmanship
           </p>
           <div class="mt-12">
-            <a
-              href=""
+            <nuxt-link to="/about"
+              
               class="animate-gradient hover:bg-opacity-90 text-white border  rounded transition py-3 px-7 font-normal mb-6 sm:mb-0"
               >Read more
-            </a>
+            </nuxt-link>
           </div>
         </div>
       </div>

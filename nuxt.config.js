@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/tailwind.css"],
-  modules: ["@nuxt/test-utils/module", "nuxt-aos"],
+  modules: ["@nuxt/test-utils/module", "nuxt-aos", "@pinia/nuxt"],
 
   postcss: {
     plugins: {
@@ -18,4 +18,17 @@ export default defineNuxtConfig({
     // Add a dynamic route for product details
     '/products/:id': '~/pages/ProductDetail.vue',
   },
+
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'item-details',
+        path: '/item-details',
+        component: resolve(__dirname, 'pages/ItemDetails.vue')
+      });
+    }
+  },
+  pinia: {
+    autoImports: ['defineStore'],
+  }
 });

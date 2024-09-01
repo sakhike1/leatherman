@@ -1,109 +1,87 @@
 <template>
-  <div>
-    <div   class="font-sans p-4 mx-auto lg:max-w-7xl md:max-w-3xl sm:max-w-full">
-      <h2 class="text-4xl font-extrabold text-gray-800 mb-12">Premium leather</h2>
+  <div class="font-sans p-4 mx-auto lg:max-w-7xl md:max-w-3xl sm:max-w-full">
+    <h2 class="text-4xl font-extrabold text-gray-800 mb-12">Premium leather</h2>
 
-      <!-- Display loading spinner when fetching products -->
-      <div v-if="loading" class="text-center text-gray-500" >
-        Loading products...
-      </div>
+    <div v-if="loading" class="text-center text-gray-500">
+      Loading products...
+    </div>
 
-      <!-- Check if there are any products to display -->
-      <div v-else-if="paginatedProducts.length === 0" class="text-center text-gray-500" >
-        No products available.
-      </div>
+    <div v-else-if="paginatedProducts.length === 0" class="text-center text-gray-500">
+      No products available.
+    </div>
 
-      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div
-          v-for="product in paginatedProducts"
-          :key="product.id"
-          class="bg-white shadow-5-strong rounded border overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
-        >
-          <div class="w-full aspect-w-16 aspect-h-8 lg:h-80">
-            <img
-              :src="getImageSrc(product.image)"
-              :alt="product.name"
-              class="h-full w-full object-cover object-top"
-            />
-          </div>
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6">
+      <div
+        v-for="product in paginatedProducts"
+        :key="product.id"
+        class="bg-white shadow-5-strong rounded border overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
+        @click="viewProductDetails(product)"
+      >
+      <div class="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900">
+        <div class="w-full aspect-w-16 aspect-h-8 lg:h-80  ">
+          <img
+            :src="product.image"
+            :alt="product.name"
+            class="h-full w-full object-contain object-top"
+          />
+        </div>
 
-          <div class="p-4">
-            <h3 class="text-lg font-bold text-gray-800">{{ product.name }}</h3>
-            <div class="mt-4 flex items-center flex-wrap gap-2">
-              <h4 class="text-lg font-bold text-gray-800">{{ product.price }}</h4>
-            </div>
-            <starrating/>
-            <button
-              class="mt-4 w-full py-2 bg-gradient-to-b from-gray-900 to-gray-600 text-white rounded hover:bg-gradient-to-r from-gray-700 via-gray-900 to-black transition-colors"
-              @click="handleButtonClick(product.id)"
-            >
+        <div class="p-4   ">
+        <hr >
+          <h3 class="text-lg font-bold text-gray-800">{{ product.name }}</h3>
+         <div class="mt-4 block gap-2">
+  <h4 class="text-lg font-bold text-gray-800">{{ product.price }}</h4>
+   <p class="text-sm text-gray-600">{{ product.description }}</p>
+  <div class="ml-[-40px] mt-[-30px]"><Starrating /></div>
+  </div>
+    <NuxtLink
+            :to="{ name: 'item-details-id', params: { id: product.id } }"
+            @click="viewProductDetails(product)"
+          >
+            <button class="mt-[20] w-[150px] py-2  text-white rounded-full hover:bg-gradient-to-r bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r transition-colors">
               View Details
             </button>
-          </div>
+          </NuxtLink>
+</div>
+          
+        
         </div>
       </div>
-
-      <!-- Pagination Component -->
-      <Pagination
-        v-if="!loading && paginatedProducts.length > 0"
-        :currentPage="currentPage"
-        :totalPages="totalPages"
-        @update:page="(page) => (currentPage = page)"
-      />
     </div>
+
+    <Pagination
+      v-if="!loading && paginatedProducts.length > 0"
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @update:page="(page) => (currentPage = page)"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { useRouter } from '#app';
+import { useRouter } from 'vue-router';
+import { useProductStore } from '@/stores/productStore';
 import Pagination from '@/components/Pagination.vue';
 import Starrating from '@/components/Starrating.vue';
 
-import leather1 from '@/assets/leather1.png';
-import leather2 from '@/assets/leather2.png';
-import leather3 from '@/assets/leather3.png';
-import leather4 from '@/assets/leather4.png';
-import leather5 from '@/assets/leather5.png';
-import leather6 from '@/assets/leather6.png';
-import leather7 from '@/assets/leather7.png';
-import leather8 from '@/assets/leather8.png';
-
 const router = useRouter();
+const productStore = useProductStore();
+const { setProducts, setSelectedProduct } = productStore;
 
-const products = ref([]);
-const loading = ref(true); // Loading state
+const loading = ref(true);
 const currentPage = ref(1);
-const itemsPerPage = 8;
-
-const images = {
-  'leather1.png': leather1,
-  'leather2.png': leather2,
-  'leather3.png': leather3,
-  'leather4.png': leather4,
-  'leather5.png': leather5,
-  'leather6.png': leather6,
-  'leather7.png': leather7,
-  'leather8.png': leather8,
-};
-
-const getImageSrc = (imageName) => {
-  return images[imageName] || '/images/placeholder.png';
-};
+const itemsPerPage = 9;
 
 const paginatedProducts = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
-  return products.value.slice(start, end);
+  return productStore.products.slice(start, end);
 });
 
 const totalPages = computed(() => {
-  return Math.ceil(products.value.length / itemsPerPage);
+  return Math.ceil(productStore.products.length / itemsPerPage);
 });
-
-const handleButtonClick = (id) => {
-  router.push({ name: 'item-details', query: { id } });
-};
 
 const fetchProducts = async () => {
   try {
@@ -112,26 +90,29 @@ const fetchProducts = async () => {
       console.error('Error fetching products:', error.value);
     } else if (data.value) {
       localStorage.setItem('products', JSON.stringify(data.value));
-      products.value = data.value || [];
+      setProducts(data.value);
     } else {
       console.error('No data received');
     }
   } catch (err) {
     console.error('Error during fetch:', err);
   } finally {
-    loading.value = false; // Set loading to false when data is fetched
+    loading.value = false;
   }
+};
+
+const viewProductDetails = (product) => {
+  setSelectedProduct(product);
+  router.push({ name: 'item-details-id', params: { id: product.id } });
 };
 
 onMounted(() => {
   const storedProducts = localStorage.getItem('products');
   if (storedProducts) {
-    products.value = JSON.parse(storedProducts);
+    setProducts(JSON.parse(storedProducts));
     loading.value = false;
   } else {
     fetchProducts();
   }
 });
 </script>
-
-<style lang="scss" scoped></style>
