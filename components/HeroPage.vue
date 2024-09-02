@@ -23,7 +23,7 @@
           Leather jacket for man, made with high quality leather and front zipper closure.
           It is made of a very comfortable fabric.
         </p>
-        <nuxt-link  to="service" class="mt-8">
+        <nuxt-link  to="/services" class="mt-8">
         <button
           type="button"
           class="w-48 px-5 py-2.5 mt-8 bg-black hover:bg-gray-700 text-white tracking-wider rounded text-sm outline-none"

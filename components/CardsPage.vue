@@ -85,7 +85,6 @@ const totalPages = computed(() => {
 
 const fetchProducts = async () => {
   try {
-    const { data, error } = await useFetch('/api/products');
     if (error.value) {
       console.error('Error fetching products:', error.value);
     } else if (data.value) {
